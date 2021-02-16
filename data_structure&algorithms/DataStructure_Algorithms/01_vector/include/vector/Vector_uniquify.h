@@ -1,0 +1,18 @@
+/******************************************************************************************
+ * Data Structures in C++
+ * ISBN: 7-302-33064-6 & 7-302-33065-3 & 7-302-29652-2 & 7-302-26883-3
+ * Junhui DENG, deng@tsinghua.edu.cn
+ * Computer Science & Technology, Tsinghua University
+ * Copyright (c) 2003-2019. All rights reserved.
+ ******************************************************************************************/
+
+#pragma onces
+
+template <typename T> int Vector<T>::uniquify() { 
+   Rank i = 0, j = 0; 
+   while ( ++j < _size ) 
+      if ( _elem[i] != _elem[j] ) 
+         _elem[++i] = _elem[j]; 
+   _size = ++i; shrink(); 
+   return j - i; 
+}
