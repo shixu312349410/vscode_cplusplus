@@ -33,3 +33,48 @@ Sunday
 // 	cout << week[ans] << endl;
 // 	return 0;
 // }
+
+int main(){
+    int n ;
+    cin>>n;
+    while(n--){
+        char a,b;
+        cin>>a>>b;
+        cout<<a<<b;
+    }
+    
+    // char c,d;
+    // c = cin.get();
+    // cin.get();
+    // d = cin.get();
+    // cout<<"c = "<<c<<endl<<"d = "<<d<<endl;
+    // int n;
+    // int a,b;
+    // cin>>n>>a>>b;
+    // cout<<n<<a<<b<<endl;
+    // string s;
+    // getline(cin,s);
+    // cout<<"s="<<s<<endl;
+
+    // cin.get();
+    // cin>>a>>b;
+    // cout<<a<<" "<<b;
+    // string s;
+    // getline(cin,s);
+    // cout<<s<<endl;
+
+//     int nu1,nu2;
+//     char a,b;
+//     char c[100];
+//     cin>>nu1>>nu2;
+//     while(n>0){
+//         n--;
+//         cin>>a>>b;
+//         cout<<a<<b<<endl;
+//         //cout<<a<b;
+//     }
+//     //string s;
+//    // fgets()
+//     //cout<<s<<endl;
+    return 0;
+}
