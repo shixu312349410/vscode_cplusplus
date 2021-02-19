@@ -1,10 +1,28 @@
 #include<bits/stdc++.h>
 using namespace std;
+
 //归并排序的递归实现
-// void merge(int arr[],int low,int mid,int high){
+void merge(double A[],double TempA[],int L,int R,int RightEnd){
 
+    int LeftEnd = R-1;
+    int Temp = L;//存放结果的数组的初始位置
+    int NumElements = RightEnd - L + 1;
+    while(L<=LeftEnd && R<=RightEnd){
+        if(A[L]<=A[R]) TempA[Temp++] = A[L++];
+        else TempA[Temp++] = A[R++];
+    }
+    while(L<=LeftEnd){
+        TempA[Temp++] = A[L++];
+    }
 
-// }
+    while(R<=RightEnd){
+        TempA[Temp++] = A[R++];
+    }
+    for(int i = 0;i<NumElements;i++,RightEnd--){//
+        A[RightEnd] = TempA[RightEnd];
+    }
+
+}
 
 // void mergesort(){
 
@@ -20,7 +38,19 @@ using namespace std;
 void merge(double A[],double TempA[],int L,int R,int RightEnd){
 
     int LeftEnd = R-1;
-    int Temp = L;
+    int Temp = L;//存放结果的数组的初始位置
+    int NumElements = RightEnd - L + 1;
+    while(L<=LeftEnd&&R<=RightEnd){
+        if(A[L]<=A[R]) TempA[Temp++] = A[L++];
+        else TempA[Temp++] = A[R++];
+    }
+    while(L<=LeftEnd){
+        TempA[Temp++] = A[L++];
+
+    }
+    while(R<=RightEnd){
+        TempA[Temp++] = A[R++];
+    }
 }
 
 void merge_pass(double A[],double TempA[],int N,int length){
