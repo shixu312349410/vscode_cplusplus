@@ -91,10 +91,31 @@ t = abcdefgabcd
 //     return 0;
 // }
 
-int main(){
 
-    string str="how are you";
-    transform(str.begin(),str.end(),str.begin(),::toupper);
-    cout << str <<endl;
-    return 0;
+
+
+
+
+/***************************************************************************************************
+给你一个字符串S，要求你将字符串中出现的所有"gzu"（不区分大小写）子串删除，输出删除之后的S。
+就是说出现“Gzu”、“GZU”、“GZu”、"gzU"都可以删除。
+input example:GzzGzukkgzUuu
+output example:Gzzkkuu
+ * ************************************************************************************************/
+int main() {
+	string str,str1;
+	cin >> str;
+	str1 = str;
+	int pos = 0;
+    cout<<&str<<endl;
+    cout<<&str1<<endl;
+	transform(str1.begin(), str1.end(), str1.begin(), ::tolower);
+	//cout << str1 << endl;
+	while ((pos = str1.find("gzu")) != -1)
+	{
+		str.erase(pos, 3);
+		str1.erase(pos, 3);//这里为什么str1也要删除，因为erase返回的是删除后的字符串，不删除pos位置对不上
+	}
+	cout << str << endl;
+	return 0;
 }
