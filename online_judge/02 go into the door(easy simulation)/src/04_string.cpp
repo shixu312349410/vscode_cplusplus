@@ -90,3 +90,11 @@ t = abcdefgabcd
 //     cout<<s<<endl;
 //     return 0;
 // }
+
+int main(){
+
+    string str="how are you";
+    transform(str.begin(),str.end(),str.begin(),::toupper);
+    cout << str <<endl;
+    return 0;
+}
