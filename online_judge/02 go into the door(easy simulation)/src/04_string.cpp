@@ -102,20 +102,20 @@ t = abcdefgabcd
 input example:GzzGzukkgzUuu
 output example:Gzzkkuu
  * ************************************************************************************************/
-int main() {
-	string str,str1;
-	cin >> str;
-	str1 = str;
-	int pos = 0;
-    cout<<&str<<endl;
-    cout<<&str1<<endl;
-	transform(str1.begin(), str1.end(), str1.begin(), ::tolower);
-	//cout << str1 << endl;
-	while ((pos = str1.find("gzu")) != -1)
-	{
-		str.erase(pos, 3);
-		str1.erase(pos, 3);//这里为什么str1也要删除，因为erase返回的是删除后的字符串，不删除pos位置对不上
-	}
-	cout << str << endl;
-	return 0;
-}
+// int main() {
+// 	string str,str1;
+// 	cin >> str;
+// 	str1 = str;
+// 	int pos = 0;
+//     cout<<&str<<endl;
+//     cout<<&str1<<endl;
+// 	transform(str1.begin(), str1.end(), str1.begin(), ::tolower);
+// 	//cout << str1 << endl;
+// 	while ((pos = str1.find("gzu")) != -1)
+// 	{
+// 		str.erase(pos, 3);
+// 		str1.erase(pos, 3);//这里为什么str1也要删除，因为erase返回的是删除后的字符串，不删除pos位置对不上
+// 	}
+// 	cout << str << endl;
+// 	return 0;
+// }
