@@ -119,3 +119,66 @@ output example:Gzzkkuu
 // 	cout << str << endl;
 // 	return 0;
 // }
+
+
+
+
+
+/*******************************************************************************
+字符串操作（DreamJudge 1387)
+input:输入有多组数据,每组输入一个字符串（不大于100）然后输入n，再输入n条指令（指令一定有效）
+bac   （原字符串）
+2     (表示下面有两条命令，两种类型的命令)
+003   （命令1，第一位0表示翻转，第二位代表待操作的字符串的起始下标int i；第三位表示需要操作的字符串长度int len。）
+112as （命令2，第一位1代表替换；第二位代表待操作的字符串的起始下标int i；第三位表示需要操作的字符串长度int len，                                  
+              命令的第四位开始到最后的字符串替换原读入的字符串下标 i 到 i+len-1的字符串）
+
+output:(根据指令对字符串操作后输出结果。)
+cab
+cas
+
+注：字符串操作函数复习
+//reverse()  反转 
+//reverse(s.begin(), s.end())//不属于对象的方法 不用对象名调用
+//reverse(s.begin()+l,s.begin()+l+len); 不是对象方法所以参数是迭代器
+
+//s.substr(p,n)  子串 
+//返回从s的下标p开始的n个字符组成的字符串 
+//对象方法
+
+//s.replace(p0,len0,s2,pos,len)
+//删除p0开始的len0个字符，
+//然后在p0处插入串s2中从pos开始的len个字符
+
+//s.erase(p0,len)删除s中从p0开始的len个字符 
+
+//s.find(s2,pos)从前往后，查找成功时返回第一次出现的下标
+//失败返回string::npos的值?(-1)
+*******************************************************************************/
+// int main(){
+//     string s;
+//     string cmd;
+//     int n;
+//     while(getline(cin,s)){
+//         cin>>n;
+//         for(int i = 0;i<n;i++){
+//             cin>>cmd;
+//             if(cmd[0] == '0'){
+
+//                 int ind = cmd[1]-'0';
+//                 int len = cmd[2] - '0';
+//                 reverse(s.begin()+ind,s.begin()+ind+len);
+
+//             }
+
+//             if(cmd[0] == '1'){
+//                 int ind = cmd[1]-'0';
+//                 int len = cmd[2]-'0';
+//                 string add = cmd.substr(3,len);
+//                 s.replace(ind,len,add,0,len);
+//             }
+//             cout<<s<<endl;
+//         }
+//     }
+//     return 0;
+// }
