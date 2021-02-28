@@ -116,25 +116,25 @@ BeiJu
 1
 BeiJu
 *************************************************************************/
-int main(){
-    int m,n;
-    int stu[205];
+// int main(){
+//     int m,n;
+//     int stu[205];
    
-    while(cin>>m>>n){
-         map<int,int> M;
-        for(int i = 1;i<=m;i++){
-            cin>>stu[i];
-            M[stu[i]]++;
-        }
+//     while(cin>>m>>n){
+//          map<int,int> M;
+//         for(int i = 1;i<=m;i++){
+//             cin>>stu[i];
+//             M[stu[i]]++;
+//         }
 
-        for(int i = 1;i<=m;i++){
+//         for(int i = 1;i<=m;i++){
 
-            if(M[stu[i]]>1){
-                cout<<(M[stu[i]]-1)<<endl;
-            }
-            else
-                cout<<"BeiJu"<<endl;
-        }
-    }
-    return 0;
-}
+//             if(M[stu[i]]>1){
+//                 cout<<(M[stu[i]]-1)<<endl;
+//             }
+//             else
+//                 cout<<"BeiJu"<<endl;
+//         }
+//     }
+//     return 0;
+// }
