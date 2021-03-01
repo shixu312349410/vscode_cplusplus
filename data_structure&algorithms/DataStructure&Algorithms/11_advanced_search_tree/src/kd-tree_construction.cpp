@@ -86,12 +86,14 @@ int main(){
             // if((st.top().parent != -1) && st.top().rd == 1){
             //     tree[st.top().parent].left = root;
             // }
-            start = 0;
+            start = st.top().start;
             end = root - 1;
+            //if(start<=end){
             parent = root;
             rd = 1;
             fm = {start,end,parent,rd};
             st.push(fm);
+            //}
             
             // else {
             //     fm = st.top();
@@ -103,20 +105,24 @@ int main(){
         while(!st.empty()){    //返回处理
             fm = st.top();
             st.pop();
-            if(fm.rd == 0)
+            if(fm.rd == 0)    //从根节点返回
                 return true;
 
-            if(fm.rd == 1){
-            // temp = st.top(); 
-                temp.start = fm.parent + 1;
+            if(fm.rd == 1){   //从左子树返回
+                // temp = st.top(); 
+                start = temp.start = fm.parent + 1;
+                end = temp.end = st.top().end;
+                temp.parent = fm.parent;
                 temp.rd = 2;
-                tree[parent].left = fm.start+(fm.end-fm.start)/2;
+                tree[fm.parent].left = fm.start+(fm.end-fm.start)/2;
                 st.push(temp);
                 break;
             }
 
-            if(fm.rd == 2){
+            if(fm.rd == 2){  //从右子树返回
                 
+                tree[fm.parent].right = fm.start+(fm.end-fm.start)/2;
+           
             }
 
         }
