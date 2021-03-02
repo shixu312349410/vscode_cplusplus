@@ -12,6 +12,7 @@ node tree[15];
 
 struct frame
 {
+   int dir;
    int start;
    int end;
    int parent;

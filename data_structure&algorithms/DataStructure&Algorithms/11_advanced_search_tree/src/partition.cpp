@@ -5,7 +5,8 @@
 using namespace std;
 
 /***************************************
-
+ * 
+ * 
 ****************************************/
 void partition(int dir,int start,int end,int tempA[],int tempB[]){ //dir:0 for X, 1 for Y,2 for Z
 
@@ -13,7 +14,7 @@ void partition(int dir,int start,int end,int tempA[],int tempB[]){ //dir:0 for X
     int root = start+(end-start)/2;
     // int ind1 = 0;
     // int ind2 = root;
-    if(dir == 0){ 
+    if(dir == 0){ //X direction
 
         for(int i = start,ind1 = start,ind2 = root+1; i<=end;i++){
             if(indices_y[i] == indices_x[root]){
@@ -41,34 +42,34 @@ void partition(int dir,int start,int end,int tempA[],int tempB[]){ //dir:0 for X
         }
     }
 
-    // if(dir == 1){
+    if(dir == 1){ //Y direction
 
-    //     for(int i = 0,ind1 = 0,ind2 = root+1; i<num;i++){
-    //         if(indices_x[i] == indices_y[root]){
-    //             continue;
-    //         }
+        for(int i = 0,ind1 = 0,ind2 = root+1; i<num;i++){
+            if(indices_x[i] == indices_y[root]){
+                continue;
+            }
 
-    //         if(data[indices_x[i]][0] < data[tempA[root]][0]){
-    //             tempA[ind1++] = indices_x[i];
-    //         }
-    //         else{
-    //             tempA[ind2++] = indices_x[i];
-    //         }
-    //     }
+            if(data[indices_x[i]][0] < data[tempA[root]][0]){
+                tempA[ind1++] = indices_x[i];
+            }
+            else{
+                tempA[ind2++] = indices_x[i];
+            }
+        }
 
-    //     for(int i = 0,ind1 = 0,ind2 = root+1; i<num;i++){
-    //         if(indices_y[i] == indices_x[root])
-    //             continue;
+        for(int i = 0,ind1 = 0,ind2 = root+1; i<num;i++){
+            if(indices_y[i] == indices_x[root])
+                continue;
             
-    //         if(data[indices_z[i]][0] < data[indices_x[root]][0]){
-    //             tempB[ind1++] = indices_z[i];
-    //         }
-    //         else{
-    //             tempB[ind2++] = indices_z[i];
-    //         }
-    //     }
+            if(data[indices_z[i]][0] < data[indices_x[root]][0]){
+                tempB[ind1++] = indices_z[i];
+            }
+            else{
+                tempB[ind2++] = indices_z[i];
+            }
+        }
 
-    // }
+    }
 
 }
 
@@ -93,6 +94,7 @@ int main(){
         cout<<tempA[i]<<" ";
     }
     cout<<endl;
+    cout<<endl;
 
     for(int i = 0;i<15;i++){
         cout<<indices_z[i]<<" ";
@@ -102,7 +104,7 @@ int main(){
     for(int i = 0;i<15;i++){
         cout<<tempB[i]<<" ";
     }
-    cout<<endl;
+    cout<<endl
 
     return 0;
 }
