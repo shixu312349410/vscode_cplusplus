@@ -1,7 +1,8 @@
-// #include"kdtree_construction.h"
+#include"kdtree_construction.h"
+#include<bits/stdc++.h>
+using namespace std;
 
-
-// int main(){
-
-//     return 0;
-// }
+int main(){
+    
+    return 0;
+}

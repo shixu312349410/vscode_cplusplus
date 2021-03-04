@@ -1,7 +1,7 @@
 #pragma once
 
 struct node {
-    double point[3];
+    //double point[3];
     int parent = -2;
     int left = -2;
     int right = -2;
@@ -43,5 +43,6 @@ double data_z[15] = {3,2,7,9,5,6,1,2,8,1,5,8,3,3,6};
 int indices_x[15]={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14};
 int indices_y[15]={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14};
 int indices_z[15]={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14};
-int tempA[15];
-int tempB[15];
+int temp_indices_x[15];
+int temp_indices_y[15];
+int temp_indices_z[15];
