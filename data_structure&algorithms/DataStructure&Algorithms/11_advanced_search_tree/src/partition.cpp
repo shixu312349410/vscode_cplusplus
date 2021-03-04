@@ -104,7 +104,7 @@ int main(){
     for(int i = 0;i<15;i++){
         cout<<tempB[i]<<" ";
     }
-    cout<<endl
+    cout<<endl;
 
     return 0;
 }
