@@ -127,24 +127,24 @@ using namespace std;
 输出排序之后的结果。
 1 3 5 7 2 4 6 8
 *****************************************************************************************************/
-bool cmp(int a,int b){
-    if(a%2 == b%2)
-        return a<b;
-    else
-        return (a%2)>(b%2);
-}
+// bool cmp(int a,int b){
+//     if(a%2 == b%2)
+//         return a<b;
+//     else
+//         return (a%2)>(b%2);
+// }
 
-int main(){
+// int main(){
     
-    int n;
-    int a[1005]={0};
-    cin>>n;
-    for(int i = 0;i<n;i++){
-        cin>>a[i];
-    }
-    sort(a,a+n,cmp);
-    for(int i = 0;i<n;i++){
-        cout<<a[i]<<' ';
-    }
-    return 0;
-}
+//     int n;
+//     int a[1005]={0};
+//     cin>>n;
+//     for(int i = 0;i<n;i++){
+//         cin>>a[i];
+//     }
+//     sort(a,a+n,cmp);
+//     for(int i = 0;i<n;i++){
+//         cout<<a[i]<<' ';
+//     }
+//     return 0;
+// }
