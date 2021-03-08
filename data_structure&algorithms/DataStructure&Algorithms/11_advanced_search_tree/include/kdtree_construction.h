@@ -6,6 +6,7 @@
 // extern double data_z[3] = {2,6,3};
 
 int pr_kdtree_construction();
+void pr_tree_links();
 int kdtree_construction();
 
 struct Point{

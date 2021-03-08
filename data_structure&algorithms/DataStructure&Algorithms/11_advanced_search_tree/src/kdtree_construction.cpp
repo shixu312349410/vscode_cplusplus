@@ -2,6 +2,7 @@
 #include"mergesort.h"
 #include"kdtree_construction.h"
 #include"partition.h"
+#include"mystack.h"
 using namespace std;
 
 //Point pts[3];
@@ -45,6 +46,7 @@ double data_z[num_of_pts] = {3,2,7,9,5,6,1,2,8,1,5,8,3,3,6};
 int indices_x[num_of_pts];
 int indices_y[num_of_pts];
 int indices_z[num_of_pts];
+
 int temp_indices_x[num_of_pts];
 int temp_indices_y[num_of_pts];
 int temp_indices_z[num_of_pts];
@@ -70,6 +72,7 @@ void generate_indices(int dir){
     }
     
 }
+
 int kdtree_construction(){
     
     cout<<num_of_pts<<endl;
@@ -77,9 +80,13 @@ int kdtree_construction(){
     generate_indices(1);
     generate_indices(2);
 
-    Merge_sort(data_x, indices_x,num_of_pts);
-    Merge_sort(data_y, indices_y,num_of_pts);
-    Merge_sort(data_z, indices_z,num_of_pts);
+    // Merge_sort(data_x, indices_x,num_of_pts);
+    // Merge_sort(data_y, indices_y,num_of_pts);
+    // Merge_sort(data_z, indices_z,num_of_pts);
+
+    Merge_sort(pts,0,indices_x,num_of_pts); //X direction
+    Merge_sort(pts,1,indices_y,num_of_pts); //Y direction
+    Merge_sort(pts,2,indices_z,num_of_pts); //Z direction
 
     for(int i =0;i<num_of_pts;i++){
         cout<<indices_x[i]<<' ';
@@ -95,6 +102,7 @@ int kdtree_construction(){
         cout<<indices_z[i]<<' ';
     }
     cout<<endl;
+    cout<<endl;
     
     //迭代构造kd-tree
     int dir = 0;
@@ -104,7 +112,8 @@ int kdtree_construction(){
     int rd = 0;
     frame temp;
     frame fm = {dir,start,end,parent,rd}; //区段[start,end]的父节点parent(在静态树表中的序号),rd代表从哪个递归规则处返回
-    stack<frame> st;
+    //stack<frame> st;
+    MyStack<frame> st;
     st.push(fm);
     int root = -1;
 
@@ -116,7 +125,8 @@ int kdtree_construction(){
 
             dir = st.top().dir;
 
-            cout<<"partition"<<endl;
+            
+            cout<<"partition"<<dir<<st.top().start<<st.top().end<<endl;
             partition(dir,st.top().start,st.top().end,pts,indices_x,indices_y,indices_z,temp_indices_x,temp_indices_y,temp_indices_z);
             for(int i =0;i<num_of_pts;i++){
                 cout<<indices_x[i]<<' ';
@@ -148,6 +158,7 @@ int kdtree_construction(){
                 tree_links[indices_z[root]].parent = st.top().parent;
                 parent = indices_z[root];
             }
+
 
             // if((st.top().parent != -1) && st.top().rd == 1){
             //     tree[st.top().parent].left = root;
@@ -260,4 +271,11 @@ int pr_kdtree_construction(){
 
     cout<<"kdtree_construction"<<endl;
     return 0;
+}
+
+void pr_tree_links(){
+    cout<<"pr_tree_links"<<endl;
+    for(int i = 0;i<num_of_pts;i++){
+        cout<<i<<" "<<tree_links[i].parent<<' '<<tree_links[i].left<<' '<<tree_links[i].right<<' '<<endl;        
+    }
 }

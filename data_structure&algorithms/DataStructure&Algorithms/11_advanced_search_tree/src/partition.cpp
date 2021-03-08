@@ -65,7 +65,7 @@ void partition(int dir,int start,int end,
                 continue;
             }
 
-            if(pts[indices_x[i]][0] < pts[indices_y[root]][0]){
+            if(pts[indices_x[i]][1] < pts[indices_y[root]][1]){
                 temp_indices_x[ind1++] = indices_x[i];
             }
             else{
@@ -78,11 +78,11 @@ void partition(int dir,int start,int end,
         }
         
         //resort Z direction
-        for(int i = 0,ind1 = 0,ind2 = root+1; i<num;i++){
+        for(int i = start,ind1 = start,ind2 = root+1; i<=end;i++){
             if(indices_z[i] == indices_y[root])
                 continue;
             
-            if(pts[indices_z[i]][0] < pts[indices_y[root]][0]){
+            if(pts[indices_z[i]][1] < pts[indices_y[root]][1]){
                 temp_indices_z[ind1++] = indices_z[i];
             }
             else{
@@ -90,7 +90,7 @@ void partition(int dir,int start,int end,
             }
         }
 
-        for(int i = start;i<=end;i++){ //move the temp data to the original array
+        for(int i = start;i<=end;i++){  // move the temp data to the original array
             indices_z[i] = temp_indices_z[i];
         }
 
@@ -104,7 +104,7 @@ void partition(int dir,int start,int end,
                 continue;
             }
 
-            if(pts[indices_x[i]][0] < pts[indices_z[root]][0]){
+            if(pts[indices_x[i]][2] < pts[indices_z[root]][2]){
                 temp_indices_x[ind1++] = indices_x[i];
             }
             else{
@@ -121,7 +121,7 @@ void partition(int dir,int start,int end,
             if(indices_y[i] == indices_z[root])
                 continue;
             
-            if(pts[indices_y[i]][0] < pts[indices_z[root]][0]){
+            if(pts[indices_y[i]][2] < pts[indices_z[root]][2]){
                 temp_indices_y[ind1++] = indices_y[i];
             }
             else{

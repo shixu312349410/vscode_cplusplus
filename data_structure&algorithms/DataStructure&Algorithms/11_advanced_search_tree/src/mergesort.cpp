@@ -148,23 +148,142 @@ using namespace std;
 // }
 
 
-//归并排序（非递归（循环迭代实现）+索引数组
-void Merge(double A[],int Indices[],int TempInd[],int L,int R,int RightEnd){
+/************************************归并排序（非递归（循环迭代实现）+索引数组******************************************/
+// void Merge(double A[],int Indices[],int TempInd[],int L,int R,int RightEnd){
 
+//     int LeftEnd = R-1;
+//     int Temp = L;//存放结果的数组的初始位置
+//     //int NumElements = RightEnd - L + 1;
+//     while(L<=LeftEnd && R<=RightEnd){
+//         if(A[Indices[L]]<=A[Indices[R]]) TempInd[Temp++] = Indices[L++];
+//         else TempInd[Temp++] = Indices[R++];
+//     }
+//     while(L<=LeftEnd){
+//         TempInd[Temp++] = Indices[L++];
+//     }
+
+//     while(R<=RightEnd){
+//         TempInd[Temp++] = Indices[R++];
+//     }
+
+//     //这里不做最后一步的搬移操作，最后把merge的结果放到TempA中
+//     // for(int i = 0;i<NumElements;i++,RightEnd--){//move data in temp array to original array A
+//     //     A[RightEnd] = TempA[RightEnd];
+//     // }
+
+// }
+
+// void Merge_pass(double A[],int Indices[],int TempInd[],int N,int length){
+    
+//     int i;
+//     for (i = 0;i<=N-2*length;i+=2*length){//尾巴另外处理，也就是先处理前面都是成对出现的部分
+//         Merge(A,Indices,TempInd,i,i+length,i+2*length-1);
+//     }
+//     if(i+length<N)/*归并最后两个子列*/
+//         Merge(A,Indices,TempInd,i,i+length,N-1);
+//     else//最后只剩一个子列,直接把A导入到TempA里面
+//         for(int j = i;j<N;j++) TempInd[j] = Indices[j];
+
+// }
+
+
+// // 动态内存分配版本
+// // void Merge_sort(double A[], int N){
+
+// //     int length = 1;//初始化子序列的长度，即步长
+// //     double * TempA;
+// //     TempA  = (double*)malloc(N*sizeof(double));
+// //     if(TempA!=NULL){
+// //         while(length<N){
+// //             Merge_pass(A,TempA,N,length);
+// //             length*=2;
+// //             Merge_pass(TempA,A,N,length);
+// //             length*=2;
+// //         }
+// //         free(TempA);
+
+// //     }
+// //     else    
+// //         printf("memory insufficient");
+
+// // }
+
+// //没有动态分配内存的代码
+// void Merge_sort(double A[], int Indices[],int N){
+
+//     int length = 1;//初始化子序列的长度，即步长
+//     // double * TempA;
+//     // TempA  = (double*)malloc(N*sizeof(double));
+//     int TempInd[N];
+//     if(TempInd!=NULL){
+//         while(length<N){
+//             Merge_pass(A,Indices,TempInd,N,length);
+//             length*=2;
+//             Merge_pass(A,TempInd,Indices,N,length);
+//             length*=2;
+//         }
+//         //free(TempA);
+
+//     }
+//     // else    
+//     //     printf("memory insufficient");
+
+// }
+
+
+
+
+/**********************************直接传递点云数据，按照x,y,z的列数据得到索引数组排序后的值****************************/
+//归并排序（非递归（循环迭代实现）+ 索引数组
+void Merge(double pts[][3],int dir,int Indices[],int TempInd[],int L,int R,int RightEnd){
+           
     int LeftEnd = R-1;
     int Temp = L;//存放结果的数组的初始位置
     //int NumElements = RightEnd - L + 1;
-    while(L<=LeftEnd && R<=RightEnd){
-        if(A[Indices[L]]<=A[Indices[R]]) TempInd[Temp++] = Indices[L++];
-        else TempInd[Temp++] = Indices[R++];
-    }
-    while(L<=LeftEnd){
-        TempInd[Temp++] = Indices[L++];
-    }
+    if(dir == 0){
+        while(L<=LeftEnd && R<=RightEnd){
+            if(pts[Indices[L]][0]<=pts[Indices[R]][0]) TempInd[Temp++] = Indices[L++];
+            else TempInd[Temp++] = Indices[R++];
+        }
+        while(L<=LeftEnd){
+            TempInd[Temp++] = Indices[L++];
+        }
 
-    while(R<=RightEnd){
-        TempInd[Temp++] = Indices[R++];
+        while(R<=RightEnd){
+            TempInd[Temp++] = Indices[R++];
+        }
+
     }
+    else if(dir == 1){
+        while(L<=LeftEnd && R<=RightEnd){
+            if(pts[Indices[L]][1]<=pts[Indices[R]][1]) TempInd[Temp++] = Indices[L++];
+            else TempInd[Temp++] = Indices[R++];
+        }
+        while(L<=LeftEnd){
+            TempInd[Temp++] = Indices[L++];
+        }
+
+        while(R<=RightEnd){
+            TempInd[Temp++] = Indices[R++];
+        }
+
+    }
+    else if(dir == 2){
+        while(L<=LeftEnd && R<=RightEnd){
+            if(pts[Indices[L]][2]<=pts[Indices[R]][2]) TempInd[Temp++] = Indices[L++];
+            else TempInd[Temp++] = Indices[R++];
+        }
+        while(L<=LeftEnd){
+            TempInd[Temp++] = Indices[L++];
+        }
+
+        while(R<=RightEnd){
+            TempInd[Temp++] = Indices[R++];
+        }
+
+
+    }
+        
 
     //这里不做最后一步的搬移操作，最后把merge的结果放到TempA中
     // for(int i = 0;i<NumElements;i++,RightEnd--){//move data in temp array to original array A
@@ -173,14 +292,14 @@ void Merge(double A[],int Indices[],int TempInd[],int L,int R,int RightEnd){
 
 }
 
-void Merge_pass(double A[],int Indices[],int TempInd[],int N,int length){
+void Merge_pass(double pts[][3],int dir,int Indices[],int TempInd[],int N,int length){
     
     int i;
-    for (i = 0;i<=N-2*length;i+=2*length){//尾巴另外处理，也就是先处理前面都是成对出现的部分
-        Merge(A,Indices,TempInd,i,i+length,i+2*length-1);
+    for (i = 0;i<=N-2*length;i+=2*length){ //尾巴另外处理，也就是先处理前面都是成对出现的部分
+        Merge(pts,dir,Indices,TempInd,i,i+length,i+2*length-1);
     }
     if(i+length<N)/*归并最后两个子列*/
-        Merge(A,Indices,TempInd,i,i+length,N-1);
+        Merge(pts,dir,Indices,TempInd,i,i+length,N-1);
     else//最后只剩一个子列,直接把A导入到TempA里面
         for(int j = i;j<N;j++) TempInd[j] = Indices[j];
 
@@ -209,7 +328,7 @@ void Merge_pass(double A[],int Indices[],int TempInd[],int N,int length){
 // }
 
 //没有动态分配内存的代码
-void Merge_sort(double A[], int Indices[],int N){
+void Merge_sort(double pts[][3], int dir,int Indices[],int N){
 
     int length = 1;//初始化子序列的长度，即步长
     // double * TempA;
@@ -217,9 +336,9 @@ void Merge_sort(double A[], int Indices[],int N){
     int TempInd[N];
     if(TempInd!=NULL){
         while(length<N){
-            Merge_pass(A,Indices,TempInd,N,length);
+            Merge_pass(pts,dir,Indices,TempInd,N,length);
             length*=2;
-            Merge_pass(A,TempInd,Indices,N,length);
+            Merge_pass(pts,dir,TempInd,Indices,N,length);
             length*=2;
         }
         //free(TempA);
